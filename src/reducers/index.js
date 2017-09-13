@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import NursesReducer from './reducer_nurses';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  nurses: NursesReducer
 });
 
 export default rootReducer;
