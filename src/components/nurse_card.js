@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
 import { Button, Card, Image, Icon, Statistic, Grid } from 'semantic-ui-react'
+import _ from 'lodash';
 
 class NurseCard extends Component {
+  renderPatients() {
+    return _.map(this.props.assigned_patients, patient=>{
+      return <div>{patient.bed_number}</div>
+    });
+  }
 
   render() {
     return (
@@ -23,6 +29,7 @@ class NurseCard extends Component {
           </Card.Content>
           <Card.Content>
             <Grid textAlign='center' columns={3} divided>
+              {this.renderPatients()}
               <Grid.Column>
                 <Icon name='image'/>
               </Grid.Column>

@@ -18,7 +18,7 @@ class PatientCard extends Component {
                     <Icon name='id card outline'/>
                   </Statistic.Label>
                 </Statistic>
-                <Statistic label='Acuity Average' float='right' size='mini' value={this.props.nurse.id}/>
+                <Statistic label='Acuity Average' float='right' size='mini' value={this.props.patient.id}/>
               </Statistic.Group>
             </Card.Header>
           </Card.Content>

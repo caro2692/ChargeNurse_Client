@@ -15,7 +15,8 @@ class NurseContainer extends Component {
 
   renderNurses() {
     return _.map(this.props.nurses, nurse=>{
-      return <NurseCard nurse={nurse}/>
+      //let patients = _.pickBy(this.props.patients, [1,2])
+      return <NurseCard nurse={nurse} assigned_patients={_.pick(this.props.patients, nurse.patients)}/>
     });
   }
 
@@ -23,15 +24,14 @@ class NurseContainer extends Component {
     return (
       <div>
         <h3><Link to="/nurses/1">Nurses</Link></h3>
-
           {this.renderNurses()}
-
       </div>
     );
   }
 }
 function mapStatetoProps(state){
-  return { nurses:state.nurses}
+  return { nurses:state.nurses,
+          patients: state.patients}
 }
 
 
