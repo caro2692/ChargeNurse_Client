@@ -1,49 +1,33 @@
-import React, {Component} from 'react'
-import { Button, Card, Image, Icon, Statistic, Grid } from 'semantic-ui-react'
 import _ from 'lodash';
+import React, {Component} from 'react'
+import { Button, Card, Image, Icon, Label, Statistic, Segment, Grid } from 'semantic-ui-react'
+
+import  PatientCard from './patient_card';
 
 class NurseCard extends Component {
   renderPatients() {
     return _.map(this.props.assigned_patients, patient=>{
-      return <div>{patient.bed_number}</div>
+      return <PatientCard patient={patient}></PatientCard >
     });
   }
 
   render() {
     return (
-      <div>
-        <Grid.Row>
-        <Card fluid>
-          <Card.Content>
-            <Statistic.Group>
-              <Statistic size='mini'>
-                <Statistic.Value>
-                  {this.props.nurse.first_name}
-                </Statistic.Value>
-                <Statistic.Label>
-                  <Icon name='id card outline'/>
-                </Statistic.Label>
-              </Statistic>
-              <Statistic label='Acuity Average' float='right' size='mini' value={this.props.nurse.id}/>
-            </Statistic.Group>
-          </Card.Content>
-          <Card.Content>
-            <Grid textAlign='center' columns={3} divided>
-              {this.renderPatients()}
-              <Grid.Column>
-                <Icon name='image'/>
-              </Grid.Column>
-              <Grid.Column>
-                <Icon name='image'/>
-              </Grid.Column>
-              <Grid.Column>
-                <Icon name='image'/>
-              </Grid.Column>
-            </Grid>
-          </Card.Content>
-        </Card>
-        </Grid.Row>
-      </div>
+      <Segment.Group>
+        <Segment secondary>
+          <h3>
+            {this.props.nurse.first_name}
+            <Label color='red' floated='right' circular>
+              {this.props.nurse.id}
+            </Label>
+          </h3>
+        </Segment>
+        <Segment>
+          <Card.Group itemsPerRow='3'>
+            {this.renderPatients()}
+          </Card.Group>
+        </Segment>
+      </Segment.Group>
     );
   }
 }

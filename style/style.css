@@ -1,0 +1,6 @@
+.patient-card .acuity-rating {
+  text-align: center;
+}
+.patient-card .acuity-rating .label-text {
+  font-size: 0.5em;
+}

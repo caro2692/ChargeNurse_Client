@@ -23,12 +23,9 @@ class PatientContainer extends Component {
     return (
       <div>
         <h3><Link to="/patients/1">Patients</Link></h3>
-        <Grid.Row>
-          <Card.Group itemsPerRow='2'>
-            {this.renderPatients()}
-          </Card.Group>
-        </Grid.Row>
-
+        <Card.Group itemsPerRow='2'>
+          {this.renderPatients()}
+        </Card.Group>
       </div>
     );
   }
