@@ -12,9 +12,7 @@ class PatientContainer extends Component {
   componentDidMount() {
      this.props.fetchPatients();
   }
-  componentWillReceiveProps(nextProps, oldProps) {
-    console.log(nextProps, oldProps);
-  }
+
   renderPatients() {
     return _.map(_.filter(this.props.patients,'assigned', '0'), patient=>{
     //return _.map(this.props.patients, patient=>{

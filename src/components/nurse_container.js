@@ -12,9 +12,6 @@ class NurseContainer extends Component {
   componentDidMount() {
      this.props.fetchNurses();
   }
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps, 'newValue');
-  }
   renderNurses() {
     return _.map(this.props.nurses, nurse=>{
       //let patients = _.pickBy(this.props.patients, [1,2])

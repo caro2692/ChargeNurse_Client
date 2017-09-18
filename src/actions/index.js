@@ -5,7 +5,6 @@ export const FETCH_PATIENTS = 'fetch_patients';
 const ROOT_URL = 'https://radiant-cove-91102.herokuapp.com/api';
 
 export function fetchNurses() {
-  console.log('got here');
   const request = axios.get(`${ROOT_URL}/nurses/shift/2`);
 
   return {

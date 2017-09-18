@@ -1,3 +1,21 @@
+.nav-bar {
+  height: 50px;
+}
+
+.main-grid {
+  position: absolute;
+  height: 100%;
+}
+
+.patient-column {
+  background-color: #d7e9f1;
+}
+
+.patient-column, .nurse-column {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .patient-card .acuity-rating {
   text-align: center;
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Dropdown, Grid, Icon, Image, Label, List, Statistic} from 'semantic-ui-react'
 import _ from 'lodash';
+import PatientAcuity from './acuity_patient';
 
 class PatientCardDrop extends Component {
   constructor(props) {
@@ -63,6 +64,10 @@ class PatientCardDrop extends Component {
         }
       })
   }
+
+  renderAcuity() {
+    return <PatientAcuity patient={this.props.patient}></PatientAcuity>
+  }
   render() {
     const colors = ['red', 'blue']
     return (
@@ -73,9 +78,7 @@ class PatientCardDrop extends Component {
                 <Icon name='hotel' /> {this.props.patient.bed_number}
               </Label>
               <div className='right floated acuity-rating'>
-                <Label color='red' circular>
-                  {this.props.patient.id}
-                </Label>
+                {this.renderAcuity()}
                 <div className='label-text'>Acuity</div>
               </div>
             </Card.Header>
