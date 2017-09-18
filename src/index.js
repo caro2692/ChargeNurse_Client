@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 
 import reducers from './reducers';
@@ -12,11 +13,19 @@ import NurseContainer from './components/nurse_container';
 import NursesSingle from './components/nurses_single';
 import CardExampleGroups from './components/nurse_card';
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+// const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore)
+const createStoreWithMiddleware = (initialState => createStore(
+         reducers,
+         initialState,
+         compose(
+           applyMiddleware(thunk, promise),
+         window.devToolsExtension ? window.devToolsExtension() : f => f))
+     );
 
+const store = createStoreWithMiddleware();
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <BrowserRouter>
       <div>
         <Switch>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNurses } from '../actions';
+import { fetchNurses, updateAssignment, deleteAssignment } from '../actions';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import  NurseCard from './nurse_card';
@@ -12,11 +12,13 @@ class NurseContainer extends Component {
   componentDidMount() {
      this.props.fetchNurses();
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps, 'newValue');
+  }
   renderNurses() {
     return _.map(this.props.nurses, nurse=>{
       //let patients = _.pickBy(this.props.patients, [1,2])
-      return <NurseCard nurse={nurse} assigned_patients={_.pick(this.props.patients, nurse.patients)}/>
+      return <NurseCard key={nurse.id} nurse={nurse} updateAssignment={this.props.updateAssignment} deleteAssignment={this.props.deleteAssignment} assigned_patients={_.pick(this.props.patients, nurse.patients)} nurses={this.props.nurses}/>
     });
   }
 
@@ -36,4 +38,4 @@ function mapStatetoProps(state){
 
 
 //wires up fetchNurses to be a prop as action creator for component
-export default connect(mapStatetoProps, { fetchNurses })(NurseContainer);
+export default connect(mapStatetoProps, { fetchNurses, updateAssignment, deleteAssignment })(NurseContainer);
