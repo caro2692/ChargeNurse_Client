@@ -70,7 +70,7 @@ class PatientCardDrop extends Component {
           <Card.Content>
             <Card.Header>
               <Label>
-                <Icon name='hotel' /> 3
+                <Icon name='hotel' /> {this.props.patient.bed_number}
               </Label>
               <div className='right floated acuity-rating'>
                 <Label color='red' circular>
