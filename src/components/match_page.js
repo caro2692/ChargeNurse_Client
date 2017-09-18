@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Container, Grid, Menu, Segment} from 'semantic-ui-react'
+import { Container, Grid, Icon, Menu, Segment} from 'semantic-ui-react'
 
 import NurseContainer from './nurse_container';
 import PatientContainer from './patient_container';
@@ -11,6 +11,7 @@ class MatchPage extends Component {
       <Container fluid>
         <Menu color='blue' size='large' inverted secondary className='nav-bar'>
           <Menu.Item>
+            <Icon name='doctor' color='pink' circular inverted></Icon>
             ChargeNurse
           </Menu.Item>
         </Menu>

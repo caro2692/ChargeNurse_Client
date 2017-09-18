@@ -10,8 +10,7 @@ import reducers from './reducers';
 
 import MatchPage from './components/match_page';
 import NurseContainer from './components/nurse_container';
-import NursesSingle from './components/nurses_single';
-import CardExampleGroups from './components/nurse_card';
+
 
 // const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore)
 const createStoreWithMiddleware = (initialState => createStore(
@@ -29,7 +28,6 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path='/nurses/:id' component={NursesSingle}/>
           <Route path="/" component={MatchPage}/>
         </Switch>
       </div>

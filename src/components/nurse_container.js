@@ -4,7 +4,8 @@ import { fetchNurses, updateAssignment, deleteAssignment } from '../actions';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import  NurseCard from './nurse_card';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
+import SummaryBar from './summary_bar'
 
 
 
@@ -19,11 +20,15 @@ class NurseContainer extends Component {
     });
   }
 
+  renderSummaryBar(){
+    return <SummaryBar></SummaryBar>
+  }
+
   render() {
     return (
       <div>
-        <h3><Link to="/nurses/1">Nurses</Link></h3>
-          {this.renderNurses()}
+        {this.renderSummaryBar()}
+        {this.renderNurses()}
       </div>
     );
   }

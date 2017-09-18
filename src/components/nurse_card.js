@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, {Component} from 'react'
-import { Button, Card, Image, Icon, Label, Statistic, Segment, Grid } from 'semantic-ui-react'
-
+import { Button, Card, Image, Icon, Label, List, Statistic, Segment, Grid } from 'semantic-ui-react'
+let math = require('mathjs');
 import  PatientCardDrop from './patient_card_wdrop';
 
 class NurseCard extends Component {
@@ -11,15 +11,41 @@ class NurseCard extends Component {
     });
   }
 
+  calculateAveragePatientSAcuity() {
+    let acuities = _.map(this.props.assigned_patients, p => p.calculateSAcuity());
+    return acuities.length === 0 ? 0 : math.mean(acuities).toFixed(1);
+  }
+
+  renderOAcuityTags() {
+    let unique_acuities = {};
+    _.map(this.props.assigned_patients, p => {
+      p.oacuity.map(acuity=>{
+        if(acuity.value=="true") {
+          if (!unique_acuities.hasOwnProperty(acuity.objective_acuity_id)){
+            unique_acuities[acuity.objective_acuity_id] = acuity.name;
+          }
+        }
+      })
+    })
+    return _.map(unique_acuities, acuity=>{
+      return <List.Item><List.Icon name='circle' color='yellow' /><List.Content>{acuity}</List.Content></List.Item>
+    })
+
+  }
+
   render() {
     return (
       <Segment.Group>
         <Segment secondary>
           <h3>
             {this.props.nurse.first_name}
+            <br></br>
             <Label color='red' floated='right' circular>
-              {this.props.nurse.id}
+              {this.calculateAveragePatientSAcuity()}
             </Label>
+            <List horizontal>
+              {this.renderOAcuityTags()}
+            </List>
           </h3>
         </Segment>
         <Segment>
