@@ -4,6 +4,7 @@ import { Button, Card, Image, Icon, Label, List, Statistic, Segment, Grid } from
 let math = require('mathjs');
 import { acuityRatingColor, acuityNameColor } from '../public/constants'
 import  PatientCardDrop from './patient_card_wdrop';
+let moment  = require('moment');
 
 class NurseCard extends Component {
   renderPatients() {
@@ -39,6 +40,29 @@ class NurseCard extends Component {
 
   }
 
+  renderNurseTags() {
+    let time_from_now = moment(this.props.nurse.unit_nurse_since).fromNow();
+    if(!time_from_now.includes('year')){
+      return (
+        <List.Item>
+          <List.Icon name='circle thin' color='yellow' />
+          <List.Content>New Nurse</List.Content>
+        </List.Item>
+      )
+    }
+  }
+
+  renderPreceptor() {
+    if(this.props.nurse.is_preceptor){
+      return (
+        <List.Item>
+          <List.Icon name='circle thin' color='yellow' />
+          <List.Content>Preceptor</List.Content>
+        </List.Item>
+      )
+    }
+  }
+
   render() {
     return (
       <Segment.Group className='nurse-card'>
@@ -48,6 +72,10 @@ class NurseCard extends Component {
               {this.calculateAveragePatientSAcuity()}
             </Label>
             {this.props.nurse.first_name}
+            <List horizontal size='small'>
+              {this.renderNurseTags()}
+              {this.renderPreceptor()}
+            </List>
           </h3>
           <List horizontal size='small'>
             {this.renderOAcuityTags()}
