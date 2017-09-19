@@ -79,7 +79,6 @@ class PatientCardDrop extends Component {
               </Label>
               <div className='right floated acuity-rating'>
                 {this.renderAcuity()}
-                <div className='label-text'>Acuity</div>
               </div>
             </Card.Header>
             <Card.Description>

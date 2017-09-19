@@ -1,3 +1,4 @@
+/*Containers*/
 .nav-bar {
   height: 50px;
 }
@@ -7,8 +8,9 @@
   height: 100%;
 }
 
+/*Columns*/
 .patient-column {
-  background-color: #d7e9f1;
+  background-color: #eff8fb;
 }
 
 .patient-column, .nurse-column {
@@ -16,9 +18,15 @@
   overflow-y: scroll;
 }
 
+/*Patient*/
 .patient-card .acuity-rating {
   text-align: center;
 }
 .patient-card .acuity-rating .label-text {
   font-size: 0.5em;
+}
+
+/*Nurse*/
+.nurse-card .circular.label {
+  margin-right: 20px;
 }

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, {Component} from 'react'
 import { Button, Card, Image, Icon, Label, List, Statistic, Segment, Grid } from 'semantic-ui-react'
 let math = require('mathjs');
+import { calculateColor } from '../public/constants'
 import  PatientCardDrop from './patient_card_wdrop';
 
 class NurseCard extends Component {
@@ -35,12 +36,12 @@ class NurseCard extends Component {
 
   render() {
     return (
-      <Segment.Group>
+      <Segment.Group className='nurse-card'>
         <Segment secondary>
           <h3>
             {this.props.nurse.first_name}
             <br></br>
-            <Label color='red' floated='right' circular>
+            <Label circular size='large' className={calculateColor(this.calculateAveragePatientSAcuity())}>
               {this.calculateAveragePatientSAcuity()}
             </Label>
             <List horizontal>
