@@ -9,9 +9,9 @@ class MatchPage extends Component {
   render() {
     return (
       <Container fluid>
-        <Menu color='blue' size='large' inverted secondary className='nav-bar'>
+        <Menu color='blue' size='big' inverted secondary className='nav-bar'>
           <Menu.Item>
-            <Icon name='doctor' color='pink' circular inverted></Icon>
+            <img src='https://image.flaticon.com/icons/svg/172/172825.svg' />
             ChargeNurse
           </Menu.Item>
         </Menu>

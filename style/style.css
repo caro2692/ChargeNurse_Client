@@ -2,6 +2,9 @@
 .nav-bar {
   height: 50px;
 }
+.nav-bar img {
+  margin-right: 15px !important;
+}
 .main-grid {
   position: absolute;
   height: 100%;
@@ -14,7 +17,7 @@
 .patient-column, .nurse-column {
   height: 100%;
   overflow-y: scroll;
-  padding: 2em !important;
+  padding: 1em 2em !important;
 }
 
 /*Summary Bar*/
