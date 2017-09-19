@@ -43,10 +43,15 @@ class PatientCardDrop extends Component {
 
   renderNurseOptions() {
     let nurse_dropdown = [];
+    let previous_nurse = {};
+    this.props.patient.previous_nurses.map(nurse=>{
+      previous_nurse[nurse.nurse_id] = nurse.shift_count;
+    })
     _.forIn(this.props.nurses, function(value_v, key_k) {
-        let nurse = {key: key_k, value: key_k, text: value_v.first_name}
-        nurse_dropdown.push(nurse);
+        let nurse = {key: value_v.id, value: value_v.id, text: value_v.first_name, description: previous_nurse[value_v.id]}
+        nurse_dropdown.push(nurse);
     });
+    //add logic for shift history description
     //if they are already assigned to a nurse, have option to re-assign
     if (this.props.patient.assigned=="1"){
       let nurse_dropdown_copy = nurse_dropdown;
