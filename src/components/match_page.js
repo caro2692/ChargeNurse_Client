@@ -15,7 +15,7 @@ class MatchPage extends Component {
             ChargeNurse
           </Menu.Item>
         </Menu>
-        <Grid columns={2} divided padded='horizontally' className='main-grid'>
+        <Grid columns={2} divided padded='horizontally' relaxed className='main-grid'>
           <Grid.Column width={5} className='patient-column'>
             <PatientContainer/>
           </Grid.Column>

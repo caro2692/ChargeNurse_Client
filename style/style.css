@@ -14,6 +14,12 @@
 .patient-column, .nurse-column {
   height: 100%;
   overflow-y: scroll;
+  padding: 2em !important;
+}
+
+/*Summary Bar*/
+.summary-bar {
+  background-color: #435461 !important;
 }
 
 /*Patient*/
