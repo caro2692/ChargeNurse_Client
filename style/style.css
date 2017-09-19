@@ -25,11 +25,12 @@
   position: relative;
 }
 .patient-card .content .description {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .patient-card .content .dropdown {
   position: absolute;
   bottom: 0;
+  right: 0;
 }
 .patient-card .acuity-rating {
   text-align: center;

@@ -14,8 +14,9 @@ export function acuityRatingColor(rating) {
 export function acuityNameColor(name) {
   const colorMaping = {
     'Complete Care': 'blue',
-    'Bone Marrow': 'purple',
-    'Immunosuppressed': 'violet'
+    'Bone Marrow': 'teal',
+    'Immunosuppressed': 'violet',
+    'Infectious': 'pink'
   }
   return colorMaping[name]
 }

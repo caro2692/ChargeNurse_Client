@@ -48,12 +48,12 @@ class PatientCardDrop extends Component {
         nurse_dropdown.push(nurse);
     });
     //if they are already assigned to a nurse, have option to re-assign
-    if(this.props.patient.assigned=="1"){
+    if (this.props.patient.assigned=="1"){
       let nurse_dropdown_copy = nurse_dropdown;
       nurse_dropdown.push({key: "0", value: "0", text: "Unassign patient"});
-      return <Dropdown placeholder='Re-assign nurse' onChange={this.reassignPatient} fluid search selection options={nurse_dropdown_copy}/>
-    }else{
-      return <Dropdown placeholder='Assign nurse' onChange={this.assignPatient} fluid search selection options={nurse_dropdown}/>
+      return <Dropdown text='Re-assign nurse' selectOnBlur={false} onChange={this.reassignPatient} options={nurse_dropdown_copy}/>
+    } else {
+      return <Dropdown text='Assign nurse' selectOnBlur={false} onChange={this.assignPatient} options={nurse_dropdown}/>
     }
   }
 
@@ -89,7 +89,9 @@ class PatientCardDrop extends Component {
               <List size='tiny'>
                 {this.renderOAcuityTags()}
               </List>
-              {this.renderNurseOptions()}
+              <div className='text right'>
+                {this.renderNurseOptions()}
+              </div>
             </Card.Description>
           </Card.Content>
         </Card>
