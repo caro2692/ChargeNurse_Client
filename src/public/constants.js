@@ -1,6 +1,6 @@
 import { round } from 'lodash'
 
-export function calculateColor(acuity) {
+export function acuityRatingColor(rating) {
   const colorMaping = {
     1: 'green',
     2: 'olive',
@@ -8,5 +8,14 @@ export function calculateColor(acuity) {
     4: 'orange',
     5: 'red'
   }
-  return colorMaping[round(acuity)]
+  return colorMaping[round(rating)]
+}
+
+export function acuityNameColor(name) {
+  const colorMaping = {
+    'Complete Care': 'blue',
+    'Bone Marrow': 'purple',
+    'Immunosuppressed': 'violet'
+  }
+  return colorMaping[name]
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Dropdown, Grid, Icon, Image, Label, List, Statistic} from 'semantic-ui-react'
 import _ from 'lodash';
+import { acuityNameColor } from '../public/constants'
 import PatientAcuity from './acuity_patient';
 
 class PatientCardDrop extends Component {
@@ -59,8 +60,13 @@ class PatientCardDrop extends Component {
   renderOAcuityTags() {
     //  let return_trues = function(acuity){return _.matchesProperty('value', 'true')}
       return this.props.patient.oacuity.map((acuity) => {
-        if(acuity.value=="true") {
-          return <List.Item><List.Icon name='circle' color='yellow' /><List.Content>{acuity.name}</List.Content></List.Item>
+        if (acuity.value=="true") {
+          return (
+            <List.Item>
+              <List.Icon name='circle thin' color={acuityNameColor(acuity.name)} />
+              <List.Content>{acuity.name}</List.Content>
+            </List.Item>
+          )
         }
       })
   }
@@ -74,16 +80,14 @@ class PatientCardDrop extends Component {
         <Card fluid className='patient-card'>
           <Card.Content>
             <Card.Header>
-              <Label>
-                <Icon name='hotel' /> {this.props.patient.bed_number}
-              </Label>
+              <Icon name='hotel' /> {this.props.patient.bed_number}
               <div className='right floated acuity-rating'>
                 {this.renderAcuity()}
               </div>
             </Card.Header>
             <Card.Description>
-              <List>
-              {this.renderOAcuityTags()}
+              <List size='tiny'>
+                {this.renderOAcuityTags()}
               </List>
               {this.renderNurseOptions()}
             </Card.Description>

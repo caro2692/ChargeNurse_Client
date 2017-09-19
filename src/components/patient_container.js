@@ -4,7 +4,7 @@ import { fetchPatients, assignPatient } from '../actions';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import  PatientCardDrop from './patient_card_wdrop';
-import { Button, Card, Image, Grid } from 'semantic-ui-react';
+import { Button, Card, Header, Image, Grid } from 'semantic-ui-react';
 
 
 
@@ -23,7 +23,7 @@ class PatientContainer extends Component {
   render() {
     return (
       <div>
-        <h3><Link to="/patients/1">Patients</Link></h3>
+        <Header as='h3' textAlign='center' divided>Patients</Header>
         <Card.Group itemsPerRow='2'>
           {this.renderPatients()}
         </Card.Group>

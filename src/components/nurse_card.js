@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, {Component} from 'react'
 import { Button, Card, Image, Icon, Label, List, Statistic, Segment, Grid } from 'semantic-ui-react'
 let math = require('mathjs');
-import { calculateColor } from '../public/constants'
+import { acuityRatingColor, acuityNameColor } from '../public/constants'
 import  PatientCardDrop from './patient_card_wdrop';
 
 class NurseCard extends Component {
@@ -29,7 +29,12 @@ class NurseCard extends Component {
       })
     })
     return _.map(unique_acuities, acuity=>{
-      return <List.Item><List.Icon name='circle' color='yellow' /><List.Content>{acuity}</List.Content></List.Item>
+      return (
+        <List.Item>
+          <List.Icon name='circle thin' color={acuityNameColor(acuity)} />
+          <List.Content>{acuity}</List.Content>
+        </List.Item>
+      )
     })
 
   }
@@ -39,15 +44,14 @@ class NurseCard extends Component {
       <Segment.Group className='nurse-card'>
         <Segment secondary>
           <h3>
-            {this.props.nurse.first_name}
-            <br></br>
-            <Label circular size='large' className={calculateColor(this.calculateAveragePatientSAcuity())}>
+            <Label circular size='large' className={acuityRatingColor(this.calculateAveragePatientSAcuity())}>
               {this.calculateAveragePatientSAcuity()}
             </Label>
-            <List horizontal>
-              {this.renderOAcuityTags()}
-            </List>
+            {this.props.nurse.first_name}
           </h3>
+          <List horizontal size='small'>
+            {this.renderOAcuityTags()}
+          </List>
         </Segment>
         <Segment>
           <Card.Group itemsPerRow='3'>
