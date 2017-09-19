@@ -13,7 +13,7 @@ class NurseCard extends Component {
   }
 
   calculateAveragePatientSAcuity() {
-    let acuities = _.map(this.props.assigned_patients, p => p.calculateSAcuity());
+    let acuities = _.map(this.props.assigned_patients, p => p.acuity_avg);
     return acuities.length === 0 ? 0 : math.mean(acuities).toFixed(1);
   }
 

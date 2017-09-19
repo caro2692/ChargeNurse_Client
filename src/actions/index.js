@@ -34,8 +34,8 @@ export function fetchPatients() {
           let sAcuity_avg = math.divide(sAcuity,counter);
           return sAcuity_avg.toFixed(1);
         };
+        patient.acuity_avg = patient.calculateSAcuity.bind(patient)();
       }
-      patient.calculateSAcuity = patient.calculateSAcuity.bind(patient);
     return data;
   }]
   });

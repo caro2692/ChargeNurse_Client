@@ -9,8 +9,8 @@ class PatientAcuity extends Component {
 
   render(){
     return (
-      <Label circular className={acuityRatingColor(this.props.patient.calculateSAcuity())}>
-        {this.props.patient.calculateSAcuity()}
+      <Label circular className={acuityRatingColor(this.props.patient.acuity_avg)}>
+        {this.props.patient.acuity_avg}
       </Label>
     )
   }

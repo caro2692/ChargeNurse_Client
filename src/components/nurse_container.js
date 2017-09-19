@@ -21,7 +21,7 @@ class NurseContainer extends Component {
   }
 
   renderSummaryBar(){
-    return <SummaryBar></SummaryBar>
+    return <SummaryBar patients={this.props.patients} nurses={this.props.nurses}></SummaryBar>
   }
 
   render() {
