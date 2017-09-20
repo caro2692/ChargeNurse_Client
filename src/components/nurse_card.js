@@ -44,10 +44,10 @@ class NurseCard extends Component {
     let time_from_now = moment(this.props.nurse.unit_nurse_since).fromNow();
     if(!time_from_now.includes('year')){
       return (
-        <List.Item>
-          <List.Icon name='circle thin' color='yellow' />
-          <List.Content>New Nurse</List.Content>
-        </List.Item>
+        <Label basic>
+          <Icon name='green student'></Icon>
+          New Nurse
+        </Label>
       )
     }
   }
@@ -57,10 +57,10 @@ class NurseCard extends Component {
     });
     if(BMT[0].value=="false"){
       return (
-        <List.Item>
-          <List.Icon name='circle thin' color='yellow' />
-          <List.Content>Not Bone Marrow Certified</List.Content>
-        </List.Item>
+        <Label basic>
+          <Icon name='red remove'></Icon>
+          Not Bone Marrow Certified
+        </Label>
       )
     }
   }
@@ -68,10 +68,10 @@ class NurseCard extends Component {
   renderPreceptor() {
     if(this.props.nurse.is_preceptor){
       return (
-        <List.Item>
-          <List.Icon name='circle thin' color='yellow' />
-          <List.Content>Preceptor</List.Content>
-        </List.Item>
+        <Label basic>
+          <Icon name='blue users'></Icon>
+          Preceptor
+        </Label>
       )
     }
   }
@@ -85,11 +85,11 @@ class NurseCard extends Component {
               {this.calculateAveragePatientSAcuity()}
             </Label>
             {this.props.nurse.first_name}
-            <List horizontal size='small'>
+            <Label.Group size='tiny' className='right floated'>
               {this.renderNurseTags()}
               {this.renderPreceptor()}
               {this.renderCertifications()}
-            </List>
+            </Label.Group>
           </h3>
           <List horizontal size='small'>
             {this.renderOAcuityTags()}
