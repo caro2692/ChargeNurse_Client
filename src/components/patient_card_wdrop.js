@@ -44,11 +44,49 @@ class PatientCardDrop extends Component {
   renderNurseOptions() {
     let nurse_dropdown = [];
     let previous_nurse = {};
+    let patient = this.props.patient;
+    let patients = this.props.patients;
     this.props.patient.previous_nurses.map(nurse=>{
       previous_nurse[nurse.nurse_id] = nurse.shift_count;
     })
+    //for each nurse on the shift loop through and determine what logic should be applied to their name
     _.forIn(this.props.nurses, function(value_v, key_k) {
-        let nurse = {key: value_v.id, value: value_v.id, text: value_v.first_name, description: previous_nurse[value_v.id]}
+        let class_name = '';
+        let nurse_bmt_cert = value_v.oacuity.filter(acuity=>{
+          return acuity.objective_acuity_id == "3";
+        })
+        //check if patient of interest has restrictions that should be checkeed for
+        patient.oacuity.map((acuity) => {
+          //if patient is bone marror patient, rule out nurses that aren't certified
+          if(acuity.value=="true" && acuity.objective_acuity_id=="3"){
+           if(nurse_bmt_cert[0].value=="false"){
+             class_name = 'drop-down-badchoice'
+           }
+          }
+          //if the patient is immune suppressed, check if nurse has any infectious patient assigned to
+          if (acuity.value=="true" && acuity.objective_acuity_id=="4") {
+            value_v.patients.forEach((p)=>{
+              let overlapping_patient_infection = patients[p].oacuity.filter(acuity=>{
+                return acuity.objective_acuity_id == "5";
+              });
+              if (overlapping_patient_infection[0].value == "true") {
+                class_name = 'drop-down-badchoice'
+              }
+            });
+            //grey out nurses that have Infectious patients
+          }
+          if (acuity.value=="true" && acuity.objective_acuity_id=="5") {
+            value_v.patients.forEach((p)=>{
+              let overlapping_patient_infection = patients[p].oacuity.filter(acuity=>{
+                return acuity.objective_acuity_id == "4";
+              });
+              if (overlapping_patient_infection[0].value == "true") {
+                class_name = 'drop-down-badchoice'
+              }
+            });
+          }
+        })
+        let nurse = {key: value_v.id, value: value_v.id, text: value_v.first_name, description: previous_nurse[value_v.id], className:class_name}
         nurse_dropdown.push(nurse);
     });
     //add logic for shift history description

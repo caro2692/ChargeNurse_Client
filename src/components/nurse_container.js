@@ -16,7 +16,7 @@ class NurseContainer extends Component {
   renderNurses() {
     return _.map(this.props.nurses, nurse=>{
       //let patients = _.pickBy(this.props.patients, [1,2])
-      return <NurseCard key={nurse.id} nurse={nurse} updateAssignment={this.props.updateAssignment} deleteAssignment={this.props.deleteAssignment} assigned_patients={_.pick(this.props.patients, nurse.patients)} nurses={this.props.nurses}/>
+      return <NurseCard key={nurse.id} nurse={nurse} updateAssignment={this.props.updateAssignment} deleteAssignment={this.props.deleteAssignment} assigned_patients={_.pick(this.props.patients, nurse.patients)} patients={this.props.patients} nurses={this.props.nurses}/>
     });
   }
 

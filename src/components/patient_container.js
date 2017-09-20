@@ -16,7 +16,7 @@ class PatientContainer extends Component {
   renderPatients() {
     return _.map(_.filter(this.props.patients,'assigned', '0'), patient=>{
     //return _.map(this.props.patients, patient=>{
-      return <PatientCardDrop key={patient.id} assignPatient={this.props.assignPatient} patient={patient} nurses={this.props.nurses}/>
+      return <PatientCardDrop key={patient.id} assignPatient={this.props.assignPatient} patients={this.props.patients} patient={patient} nurses={this.props.nurses}/>
     });
   }
 

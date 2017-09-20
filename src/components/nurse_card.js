@@ -9,7 +9,7 @@ let moment  = require('moment');
 class NurseCard extends Component {
   renderPatients() {
     return _.map(this.props.assigned_patients, patient=>{
-      return <PatientCardDrop key={patient.id} updateAssignment={this.props.updateAssignment} deleteAssignment={this.props.deleteAssignment} assignPatient={this.props.assignPatient} patient={patient} nurses={this.props.nurses} assignednurse={this.props.nurse.id}/>
+      return <PatientCardDrop key={patient.id} updateAssignment={this.props.updateAssignment} deleteAssignment={this.props.deleteAssignment} assignPatient={this.props.assignPatient} patients={this.props.patients} patient={patient} nurses={this.props.nurses} assignednurse={this.props.nurse.id}/>
     });
   }
 
@@ -51,6 +51,19 @@ class NurseCard extends Component {
       )
     }
   }
+  renderCertifications() {
+    let BMT = this.props.nurse.oacuity.filter(acuity=>{
+      return acuity.objective_acuity_id == "3";
+    });
+    if(BMT[0].value=="false"){
+      return (
+        <List.Item>
+          <List.Icon name='circle thin' color='yellow' />
+          <List.Content>Not Bone Marrow Certified</List.Content>
+        </List.Item>
+      )
+    }
+  }
 
   renderPreceptor() {
     if(this.props.nurse.is_preceptor){
@@ -75,6 +88,7 @@ class NurseCard extends Component {
             <List horizontal size='small'>
               {this.renderNurseTags()}
               {this.renderPreceptor()}
+              {this.renderCertifications()}
             </List>
           </h3>
           <List horizontal size='small'>
