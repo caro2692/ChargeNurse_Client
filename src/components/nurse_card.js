@@ -29,6 +29,7 @@ class NurseCard extends Component {
         }
       })
     })
+    //console.log(unique_acuities);
     return _.map(unique_acuities, acuity=>{
       return (
         <List.Item>
@@ -37,7 +38,6 @@ class NurseCard extends Component {
         </List.Item>
       )
     })
-
   }
 
   renderNurseTags() {
