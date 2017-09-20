@@ -16,10 +16,10 @@ class MatchPage extends Component {
           </Menu.Item>
         </Menu>
         <Grid columns={2} divided padded='horizontally' relaxed className='main-grid'>
-          <Grid.Column width={5} className='patient-column'>
+          <Grid.Column width={6} className='patient-column'>
             <PatientContainer/>
           </Grid.Column>
-          <Grid.Column width={11} className='nurse-column'>
+          <Grid.Column width={10} className='nurse-column'>
             <NurseContainer/>
           </Grid.Column>
         </Grid>

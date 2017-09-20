@@ -60,7 +60,7 @@ class PatientCardDrop extends Component {
           //if patient is bone marror patient, rule out nurses that aren't certified
           if(acuity.value=="true" && acuity.objective_acuity_id=="3"){
            if(nurse_bmt_cert[0].value=="false"){
-             class_name = 'drop-down-badchoice'
+             class_name = 'drop-down-badchoice';
            }
           }
           //if the patient is immune suppressed, check if nurse has any infectious patient assigned to
@@ -70,7 +70,7 @@ class PatientCardDrop extends Component {
                 return acuity.objective_acuity_id == "5";
               });
               if (overlapping_patient_infection[0].value == "true") {
-                class_name = 'drop-down-badchoice'
+                class_name = 'drop-down-badchoice';
               }
             });
             //grey out nurses that have Infectious patients
@@ -81,7 +81,7 @@ class PatientCardDrop extends Component {
                 return acuity.objective_acuity_id == "4";
               });
               if (overlapping_patient_infection[0].value == "true") {
-                class_name = 'drop-down-badchoice'
+                class_name = 'drop-down-badchoice';
               }
             });
           }

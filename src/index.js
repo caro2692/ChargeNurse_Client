@@ -10,6 +10,7 @@ import reducers from './reducers';
 
 import MatchPage from './components/match_page';
 import NurseContainer from './components/nurse_container';
+import Login from './components/login';
 
 
 // const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore)
@@ -28,7 +29,8 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/" component={MatchPage}/>
+          <Route path="/assign" component={MatchPage}/>
+          <Route path="/" component={Login}/>
         </Switch>
       </div>
     </BrowserRouter>
