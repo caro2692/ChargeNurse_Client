@@ -9,6 +9,12 @@
   position: absolute;
   height: 100%;
 }
+.login-container {
+  background: #eff8fb;
+  height: 100%;
+  position: fixed;
+  padding-top: 50px;
+}
 
 /*Columns*/
 .patient-column {
