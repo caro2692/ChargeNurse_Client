@@ -11,6 +11,7 @@ import reducers from './reducers';
 import MatchPage from './components/match_page';
 import NurseContainer from './components/nurse_container';
 import Login from './components/login';
+import Rating from './components/subjective_rating'
 
 
 // const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore)
@@ -30,6 +31,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/assign" component={MatchPage}/>
+          <Route path="/rating" component={Rating}/>
           <Route path="/" component={Login}/>
         </Switch>
       </div>
