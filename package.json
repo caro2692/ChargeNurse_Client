@@ -12,7 +12,8 @@
     "postinstall": "webpack -p",
     "start": "node server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "deploy": "webpack -p && cp bundle.js dist/ && firebase deploy"
   },
   "author": "",
   "license": "ISC",
